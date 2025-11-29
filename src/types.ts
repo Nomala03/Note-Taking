@@ -1,5 +1,5 @@
 export type UserPublic = { id: string; email: string; username: string };
-export type UserStored = UserPublic & { password: string };
+export type UserStored = UserPublic & { password: string; salt: string };
 
 
 export type Note = {
