@@ -4,6 +4,7 @@ import Login from "../screens/Login";
 import Register from "../screens/Register";
 import Home from "../screens/Home";
 import NoteEditor from "../screens/NoteEditor";
+import Profile from "../screens/Profile";
 import { AuthContext } from "../context/AuthContext";
 import { ActivityIndicator, View } from "react-native";
 
@@ -34,6 +35,7 @@ export default function RootNavigator() {
         <>
             <Stack.Screen name="Home" component={Home} />
             <Stack.Screen name="NoteEditor" component={NoteEditor} />
+            <Stack.Screen name="Profile" component={Profile} />
         </>
       ) : (
         <>
