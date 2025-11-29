@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Login from "../screens/Login";
 import Register from "../screens/Register";
+import Home from "../screens/Home";
+import NoteEditor from "../screens/NoteEditor";
 import { AuthContext } from "../context/AuthContext";
 import { ActivityIndicator, View } from "react-native";
 
@@ -29,7 +31,10 @@ export default function RootNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {user ? (
-        <></>
+        <>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="NoteEditor" component={NoteEditor} />
+        </>
       ) : (
         <>
           <Stack.Screen name="Login" component={Login} />
