@@ -1,5 +1,13 @@
 import React, { useState, useContext } from "react";
-import { View, Text, TextInput, Button, Alert, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  Alert,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import { AuthContext } from "../context/AuthContext";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootParamList } from "../navigation/RootNavigator";
@@ -37,21 +45,18 @@ export default function LoginScreen({ navigation }: Props) {
         style={styles.input}
       />
 
-      <View style={{ height: 12 }} />
+      <View style={{ height: 6 }} />
 
       <View
-        style={{ margin: 12, backgroundColor: "#554463ff", borderRadius: 6 }}>
-        <Button 
-        title="Submit" 
-        color={"#ffffff"}
-        onPress={handleLogin} />
+        style={{ margin: 8, backgroundColor: "#554463ff", borderRadius: 6 }}>
+        <Button title="Submit" color={"#ffffff"} onPress={handleLogin} />
       </View>
-      <View style={{ margin: 4 }}>
-        <Button
-          title="Register"
-          color={"#35266bff"}
-          onPress={() => navigation.navigate("Register")}
-        />
+      <View style={styles.registerContainer}>
+        <Text style={styles.registerText}>Don't have an account?</Text>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+          <Text style={styles.registerLink}>Register</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -67,7 +72,7 @@ const styles = StyleSheet.create({
   input: {
     borderWidth: 1,
     padding: 8,
-    margin: 12,
+    margin: 8,
     backgroundColor: "#ffffff",
     borderRadius: 6,
   },
@@ -75,5 +80,22 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 16,
     textAlign: "center",
+  },
+  registerContainer: {
+    marginTop: 24,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  registerText: {
+    color: "#35266bff",
+    fontSize: 16,
+  },
+  registerLink: {
+    marginLeft: 6,
+    color: "#35266bff",
+    fontSize: 16,
+    fontWeight: "700",
+    textDecorationLine: "underline",
   },
 });
