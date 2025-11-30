@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, Text, TextInput, Button, Alert } from "react-native";
+import { View, Text, TextInput, Button, Alert, StyleSheet } from "react-native";
 import { AuthContext } from "../context/AuthContext";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootParamList } from "../navigation/RootNavigator";
@@ -20,28 +20,60 @@ export default function LoginScreen({ navigation }: Props) {
   }
 
   return (
-    <View style={{ flex: 1, padding: 16, justifyContent: "center" }}>
-      <Text style={{ fontSize: 24, marginBottom: 16 }}>Login</Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Login</Text>
       <TextInput
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
-        style={{ borderWidth: 1, padding: 8, marginBottom: 12 }}
+        style={styles.input}
       />
       <TextInput
         placeholder="Password"
         value={password}
         onChangeText={setPassword}
         secureTextEntry
-        style={{ borderWidth: 1, padding: 8, marginBottom: 12 }}
+        style={styles.input}
       />
-      <Button title="Login" onPress={handleLogin} />
+
       <View style={{ height: 12 }} />
-      <Button
-        title="Register"
-        onPress={() => navigation.navigate("Register")}
-      />
+
+      <View
+        style={{ margin: 12, backgroundColor: "#554463ff", borderRadius: 6 }}>
+        <Button 
+        title="Submit" 
+        color={"#ffffff"}
+        onPress={handleLogin} />
+      </View>
+      <View style={{ margin: 4 }}>
+        <Button
+          title="Register"
+          color={"#35266bff"}
+          onPress={() => navigation.navigate("Register")}
+        />
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    padding: 16,
+    backgroundColor: "#dca6e7ff",
+  },
+  input: {
+    borderWidth: 1,
+    padding: 8,
+    margin: 12,
+    backgroundColor: "#ffffff",
+    borderRadius: 6,
+  },
+  title: {
+    fontSize: 24,
+    marginBottom: 16,
+    textAlign: "center",
+  },
+});
