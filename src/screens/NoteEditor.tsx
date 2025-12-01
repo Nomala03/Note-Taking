@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { View, TextInput, Button, Alert } from "react-native";
+import { View, TextInput, Button, Alert, StyleSheet } from "react-native";
 import { AuthContext } from "../context/AuthContext";
 import { createNote, updateNote } from "../storage/storage";
 import { Note } from "../types";
@@ -66,3 +66,7 @@ export default function NoteEditorScreen({ navigation, route }: any) {
     </View>
   );
 }
+
+const styles = StyleSheet.create ({
+
+})
